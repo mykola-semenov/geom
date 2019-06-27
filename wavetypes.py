@@ -13,6 +13,9 @@ def smooth_cos(x, l, h):
 def sharp_cos(x, l, h):
     return h * (math.cos(math.pi * x / l) - 1)
 
+def saw(x, l, h):
+    return - abs(2 * h * x / l)
+
 def cos(x, l, h, alpha=90):
     """ 
     Волна с заданным углом стыка, нужно численно решать
@@ -26,4 +29,5 @@ curves = {
     'circle': circle,
     'smooth-cos': smooth_cos,
     'sharp-cos': sharp_cos,
+    'saw': saw,
 }

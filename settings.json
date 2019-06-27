@@ -1,8 +1,7 @@
 {
 	"N": 8,
 	"n": 24,
-	"r": 10.9,
-	"l": 12.0,
-	"h": null,
-	"verbose": true
+	"l": 12,
+	"h": 1.8,
+	"type": "circle"
 }
