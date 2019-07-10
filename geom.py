@@ -1,3 +1,5 @@
+#!/bin/env python3
+
 import argparse
 import json
 
@@ -83,7 +85,7 @@ if __name__ == '__main__':
     X = [X_0 + i * l / n for i in range((N + 1) * n + 1)]
     
     Y = [y(x, l, h) for x in [0.5 * i * l / (n // 2 + n % 2) for i in range(n // 2 + n % 2)]]
-    Y += [y(x, l, h) for x in [(i / n - 0.5) * l for i in range(n)]] * N
+    Y += [y(x, l, h) for x in [(float(i) / float(n) - 0.5) * l for i in range(n)]] * N # float for Python 2 support
     Y += [y(x, l, h) for x in [(0.5 * i / (n // 2) - 0.5) * l for i in range(n // 2 + 1)]]
 
     # de-dimensionalize
