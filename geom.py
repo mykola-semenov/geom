@@ -21,7 +21,7 @@ def parse_args():
                         help='wave height, default 1.8')
 
     parser.add_argument('-t', '--type', type=str, choices=curves.keys(), default='circle', 
-                        dest='type', help=f'wave type, default circle')
+                        dest='type', help='wave type, default circle')
 
     parser.add_argument('--load-settings', action='store_true', dest='load_settings',
                         help='load settings from settings.json')
@@ -42,7 +42,7 @@ def process(args):
             'type': args.type,
         }
         with open('settings.json', 'w') as f:
-            json.dump(settings, f, indent='\t')
+            json.dump(settings, f, indent=4, sort_keys=True) # in python2.7 indent='\t' does not work
     
     if args.load_settings:
         with open('settings.json', 'r') as f:
@@ -66,7 +66,7 @@ def process(args):
     shift = 2.0 # shift from the sketch (?)
     
     X_0 = model_length - dist - wavy_len - shift
-    print(f'X_0 = {X_0}')
+    print('X_0 = {}'.format(X_0))
         
     return (
         args.N, args.n,
@@ -93,9 +93,9 @@ if __name__ == '__main__':
     Y_max /= 100.0
 
     with open(args.filename, 'w') as f:
-        f.write(f'{0.0}\t{0.0}\t"1"\n')
+        f.write('{}\t{}\t"1"\n'.format(0.0, 0.0))
         for x, y in zip(X, Y):
-            f.write(f'{x}\t{y}\t""\n')
-        f.write(f'{X_max}\t{0.0}\t"1"\n')
-        f.write(f'{X_max}\t{Y_max}\t"1"\n')
-        f.write(f'{0.0}\t{Y_max}\t"1 *"\n')
+            f.write('{}\t{}\t""\n'.format(x, y))
+        f.write('{}\t{}\t"1"\n'.format(X_max, 0.0))
+        f.write('{}\t{}\t"1"\n'.format(X_max, Y_max))
+        f.write('{}\t{}\t"1 *"\n'.format(0.0, Y_max))

@@ -18,8 +18,8 @@ def saw(x, l, h):
 
 def cos(x, l, h, alpha=90):
     """ 
-    Волна с заданным углом стыка, нужно численно решать
-    алгебраическое уравнение вида:
+    Wave with specified connection angle, it is needed to
+    find numerical solution for such equation:
                 x * sin(x) = C * (cos(x) - 1) 
     """
     pass
